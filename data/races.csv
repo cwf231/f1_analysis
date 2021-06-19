@@ -1,10 +1,4 @@
 ,RaceID,Season,Round,RaceName,CircuitID,DateTime,URL
-0,202101,2021,1,Bahrain Grand Prix,bahrain,2021-03-28 15:00:00+00:00,https://en.wikipedia.org/wiki/2021_Bahrain_Grand_Prix
-1,202102,2021,2,Emilia Romagna Grand Prix,imola,2021-04-18 13:00:00+00:00,http://en.wikipedia.org/wiki/2021_Emilia_Romagna_Grand_Prix
-2,202103,2021,3,Portuguese Grand Prix,portimao,2021-05-02 14:00:00+00:00,http://en.wikipedia.org/wiki/2021_Portuguese_Grand_Prix
-3,202104,2021,4,Spanish Grand Prix,catalunya,2021-05-09 13:00:00+00:00,http://en.wikipedia.org/wiki/2021_Spanish_Grand_Prix
-4,202105,2021,5,Monaco Grand Prix,monaco,2021-05-23 13:00:00+00:00,http://en.wikipedia.org/wiki/2021_Monaco_Grand_Prix
-5,202106,2021,6,Azerbaijan Grand Prix,BAK,2021-06-06 12:00:00+00:00,http://en.wikipedia.org/wiki/2021_Azerbaijan_Grand_Prix
 0,201401,2014,1,Australian Grand Prix,albert_park,2014-03-16 06:00:00+00:00,https://en.wikipedia.org/wiki/2014_Australian_Grand_Prix
 1,201402,2014,2,Malaysian Grand Prix,sepang,2014-03-30 08:00:00+00:00,https://en.wikipedia.org/wiki/2014_Malaysian_Grand_Prix
 2,201403,2014,3,Bahrain Grand Prix,bahrain,2014-04-06 15:00:00+00:00,http://en.wikipedia.org/wiki/2014_Bahrain_Grand_Prix
