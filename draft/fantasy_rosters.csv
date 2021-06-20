@@ -1,21 +1,21 @@
-,OverallPick,TeamPick,Team,LastName,FirstName,Car,Nationality
-0,1,1,Carlaniel & the Romeos,Norris,Lando,MCLAREN MERCEDES,GBR
-1,2,1,Scuderia Spaghetti,Hamilton,Lewis,MERCEDES,GBR
-2,3,1,3 Orange Whips,Verstappen,Max,RED BULL RACING HONDA,NED
-3,4,1,Deep Fried,Bottas,Valtteri,MERCEDES,FIN
-4,5,2,Deep Fried,Perez,Sergio,RED BULL RACING HONDA,MEX
-5,6,2,3 Orange Whips,Gasly,Pierre,ALPHATAURI HONDA,FRA
-6,7,2,Scuderia Spaghetti,Leclerc,Charles,FERRARI,MON
-7,8,2,Carlaniel & the Romeos,Sainz,Carlos,FERRARI,ESP
-8,9,3,Carlaniel & the Romeos,Ricciardo,Daniel,MCLAREN MERCEDES,AUS
-9,10,3,Scuderia Spaghetti,Russell,George,WILLIAMS MERCEDES,GBR
-10,11,3,3 Orange Whips,Alonso,Fernando,ALPINE RENAULT,ESP
-11,12,3,Deep Fried,Vettel,Sebastian,ASTON MARTIN MERCEDES,GER
-12,13,4,Deep Fried,Ocon,Esteban,ALPINE RENAULT,FRA
-13,14,4,3 Orange Whips,Stroll,Lance,ASTON MARTIN MERCEDES,CAN
-14,15,4,Scuderia Spaghetti,Tsunoda,Yuki,ALPHATAURI HONDA,JPN
-15,16,4,Carlaniel & the Romeos,Giovinazzi,Antonio,ALFA ROMEO RACING FERRARI,ITA
-16,17,5,Carlaniel & the Romeos,Raikkonen,Kimi,ALFA ROMEO RACING FERRARI,FIN
-17,18,5,Scuderia Spaghetti,Schumacher,Mick,HAAS FERRARI,GER
-18,19,5,3 Orange Whips,Latifi,Nicholas,WILLIAMS MERCEDES,CAN
-19,20,5,Deep Fried,Mazepin,Nikita,HAAS FERRARI,RAF
+,OverallPick,TeamPick,Team,DriverID,LastName,FirstName,Car,Nationality
+0,1,1,Carlaniel & the Romeos,norris,Norris,Lando,MCLAREN MERCEDES,GBR
+1,2,1,Scuderia Spaghetti,hamilton,Hamilton,Lewis,MERCEDES,GBR
+2,3,1,3 Orange Whips,max_verstappen,Verstappen,Max,RED BULL RACING HONDA,NED
+3,4,1,Deep Fried,bottas,Bottas,Valtteri,MERCEDES,FIN
+4,5,2,Deep Fried,perez,Perez,Sergio,RED BULL RACING HONDA,MEX
+5,6,2,3 Orange Whips,gasly,Gasly,Pierre,ALPHATAURI HONDA,FRA
+6,7,2,Scuderia Spaghetti,leclerc,Leclerc,Charles,FERRARI,MON
+7,8,2,Carlaniel & the Romeos,sainz,Sainz,Carlos,FERRARI,ESP
+8,9,3,Carlaniel & the Romeos,ricciardo,Ricciardo,Daniel,MCLAREN MERCEDES,AUS
+9,10,3,Scuderia Spaghetti,russell,Russell,George,WILLIAMS MERCEDES,GBR
+10,11,3,3 Orange Whips,alonso,Alonso,Fernando,ALPINE RENAULT,ESP
+11,12,3,Deep Fried,vettel,Vettel,Sebastian,ASTON MARTIN MERCEDES,GER
+12,13,4,Deep Fried,ocon,Ocon,Esteban,ALPINE RENAULT,FRA
+13,14,4,3 Orange Whips,stroll,Stroll,Lance,ASTON MARTIN MERCEDES,CAN
+14,15,4,Scuderia Spaghetti,tsunoda,Tsunoda,Yuki,ALPHATAURI HONDA,JPN
+15,16,4,Carlaniel & the Romeos,giovinazzi,Giovinazzi,Antonio,ALFA ROMEO RACING FERRARI,ITA
+16,17,5,Carlaniel & the Romeos,raikkonen,Raikkonen,Kimi,ALFA ROMEO RACING FERRARI,FIN
+17,18,5,Scuderia Spaghetti,mick_schumacher,Schumacher,Mick,HAAS FERRARI,GER
+18,19,5,3 Orange Whips,latifi,Latifi,Nicholas,WILLIAMS MERCEDES,CAN
+19,20,5,Deep Fried,mazepin,Mazepin,Nikita,HAAS FERRARI,RAF
