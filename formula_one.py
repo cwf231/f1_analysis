@@ -261,17 +261,18 @@ class FormulaOne:
         if save_to_dir:
             if save_to_dir not in os.listdir():
                 os.mkdir(save_to_dir)
-
-            races_df.to_csv(os.path.join(
-                save_to_dir, self._races_df))
-            circuits_df.to_csv(os.path.join(
-                save_to_dir, self._circuits_df))
-            results_df.to_csv(os.path.join(
-                save_to_dir, self._results_df))
-            drivers_df.to_csv(os.path.join(
-                save_to_dir, self._drivers_df))
-            constructors_df.to_csv(os.path.join(
-                save_to_dir, self._constructors_df))
+            
+            self.save_data()
+#             races_df.to_csv(os.path.join(
+#                 save_to_dir, self._races_df))
+#             circuits_df.to_csv(os.path.join(
+#                 save_to_dir, self._circuits_df))
+#             results_df.to_csv(os.path.join(
+#                 save_to_dir, self._results_df))
+#             drivers_df.to_csv(os.path.join(
+#                 save_to_dir, self._drivers_df))
+#             constructors_df.to_csv(os.path.join(
+#                 save_to_dir, self._constructors_df))
 
         return races_df, circuits_df, results_df, drivers_df, constructors_df
 
