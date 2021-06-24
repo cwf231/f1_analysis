@@ -64,6 +64,8 @@ cumulative_points = (
 #####
 # App Components
 #####
+TABLEAU_DASHBOARD = 'https://public.tableau.com/app/profile/stephen.helms/viz/Progresstowardthe2021Formula1DriversChampionship/2021Results'
+
 SIDEBAR_STYLE = {
     "position": "fixed",
     "top": 0,
@@ -83,14 +85,19 @@ SIDEBAR = html.Div([
         dbc.Nav([
             dbc.NavLink("F1antasy League", href="/", active="exact"),
             dbc.DropdownMenu(
-                [dbc.NavLink(team, href=f'/{team}', active="exact")
-                for team in TEAM_NAMES_LST],
+                [dbc.NavLink(team, href=f'/{"-".join(team.split())}', active="exact")
+                 for team in TEAM_NAMES_LST],
                 label='Teams'
-                )
-            ],
+                ),
+                ],
             vertical=True,
             # pills=True,
         ),
+        html.Hr(),
+        html.A(
+            'Driver Dashboard - Tableau', 
+            href=TABLEAU_DASHBOARD,
+            target='_blank')
     ],
     style=SIDEBAR_STYLE,
 )
@@ -180,8 +187,6 @@ TEAM_DROPDOWN = dbc.Row(
     )
 )
 
-TEAM_DIV = html.Div(id='team_div')
-
 #####
 # App
 #####
@@ -197,24 +202,108 @@ app.layout = html.Div(
         html.Div(
             id='main_div',
             children=[
+                dcc.Location(id='url'),
                 HEADING_DIV,
                 html.Hr(),
-
-                html.Div(
-                    id='content-div',
-                    children=[
-                        LEADERBOARD,
-                        html.Br(),
-                        LEAGUE,
-                    ]
-                ),
+                html.Div(id='content-div')
                 ],
             style=CONTENT_STYLE
-        )
-        
+            )
         ],
 	style={'width': '90%', 'margin': 'auto', 'padding': '30px'}
 )
+
+#####
+# Callbacks
+#####
+def make_team_div(team_name):
+    """Return a list of children elements for the content-div."""
+
+    team_results = (
+        f1.results.loc[f1.results['RaceID'] > 202100]
+        .merge(fantasy_rosters
+            .loc[fantasy_rosters['Team'] == team_name][['Team', 'DriverID']], 
+            on='DriverID')
+        .merge(f1.races[['RaceID', 'Round']],
+            on='RaceID')
+        .merge(f1.drivers[['DriverID', 'Code']], 
+            on='DriverID')
+    )
+
+    POINTS_PER_DRIVER = (
+        px.bar(
+            x='Round', y='Points', color='Code', 
+            data_frame=team_results, 
+            title=f'{team_name} - Points by Driver'
+            )
+        .update_layout(paper_bgcolor='rgba(0,0,0,0)', autosize=True)
+    )
+
+    TEAM_DRIVERS_TOTALS = (
+        px.line(x='Round', y='Points', color='Code', 
+        data_frame=(team_results
+                    .groupby(['Code', 'Round']).sum()
+                    .groupby('Code').cumsum()
+                    .reset_index()
+                    ), 
+        title=f'{team_name} - Cumulative Driver Points')
+        .update_layout(paper_bgcolor='rgba(0,0,0,0)', autosize=True)
+    )
+
+    TEAM_ROSTER = (
+        fantasy_rosters.loc[fantasy_rosters['Team'] == team_name]
+        .drop(columns=['LastName', 'FirstName', 'Nationality', 'Team'])
+        .merge(f1.drivers, on='DriverID')
+        .drop('DriverID', axis=1)
+        .loc[:, ['LastName', 'FirstName', 'Code', 
+                'TeamPick', 'OverallPick', 'Car',
+                'Nationality', 'DOB', 'URL']]
+    )
+
+    div_lst = [
+        dbc.Row(dbc.Col(html.H3(team_name), width='auto'), justify='center'),
+        dbc.Row(html.H5('Roster'), justify='center'),
+        dbc.Row(
+            dbc.Table.from_dataframe(
+                TEAM_ROSTER, 
+                striped=True, 
+                bordered=True, 
+                hover=True,
+                size='sm'),
+            justify='center'
+        ),
+        html.Br(),
+        dbc.Row(
+            dcc.Graph(
+                id='points_per_driver', 
+                figure=POINTS_PER_DRIVER
+                ),
+            justify='center'
+            ),
+        html.Br(),
+        dbc.Row(
+            dcc.Graph(
+                id='team_driver_standings',
+                figure=TEAM_DRIVERS_TOTALS
+                ),
+            justify='center'
+        )
+    ]
+    return div_lst
+
+
+@app.callback(Output('content-div', 'children'), Input('url', 'pathname'))
+def render_page_content(pathname):
+    """Return the page Div for each team and the league."""
+
+    team_name = pathname[1:].replace('-', ' ')
+    if not team_name:
+        return [
+            LEADERBOARD,
+            html.Br(),
+            LEAGUE,
+            ]
+    return make_team_div(team_name)
 
 #####
 # Run
