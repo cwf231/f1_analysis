@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 
-from formula_one import FormulaOne
+from support.formula_one import FormulaOne
 
 
 #####
