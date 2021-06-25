@@ -81,9 +81,10 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 SIDEBAR = html.Div([
-        html.H2("Navigation"),
+        dbc.Row(html.H2("Navigation"), justify='center'),
         html.Hr(),
-        dbc.Nav([
+        dbc.Row(
+            dbc.Nav([
             dbc.NavLink("F1antasy League", href="/", active="exact"),
             dbc.DropdownMenu(
                 [dbc.NavLink(team, href=f'/{"-".join(team.split())}', active="exact")
@@ -93,17 +94,24 @@ SIDEBAR = html.Div([
                 ],
             vertical=True,
             # pills=True,
-        ),
+            ),
+            justify='center'),
         html.Hr(),
-        html.A(
-            'Driver Dashboard - Tableau', 
-            href=TABLEAU_DASHBOARD,
-            target='_blank'),
-        html.A(
-            'League - Google Sheets',
-            href=GOOGLE_DRIVE,
-            target='_blank'
-        )
+        dbc.Row(
+            html.A(
+                'Driver Dashboard - Tableau', 
+                href=TABLEAU_DASHBOARD,
+                target='_blank'),
+            justify='center'
+            ),
+        dbc.Row(
+            html.A(
+                'League - Google Sheets',
+                href=GOOGLE_DRIVE,
+                target='_blank'
+                ),
+            justify='center'
+            ),
     ],
     style=SIDEBAR_STYLE,
 )
