@@ -16,7 +16,7 @@ from support.formula_one import FormulaOne
 # Loading data
 #####
 f1 = FormulaOne()
-f1.update()
+# f1.update()
 
 fantasy_rosters = pd.read_csv('./draft/fantasy_rosters.csv', index_col=0)
 TEAM_NAMES_LST = [
@@ -76,7 +76,7 @@ SIDEBAR_STYLE = {
 }
 CONTENT_STYLE = {
     "margin-left": "14rem",
-    # "margin-right": "2rem",
+    "margin-right": "2rem",
     "padding": "2rem 1rem",
 }
 SIDEBAR = html.Div([
@@ -117,7 +117,8 @@ HEADING_DIV = html.Div(id='heading', children=[
 			html.H3('Formula One for Formula-Friends Family'),
 			width='auto'),
 		justify='center'),
-])
+    ]
+    )
 
 LEADERBOARD = html.Div(id='leaderboard', children=[
     dbc.Row(
@@ -175,17 +176,17 @@ LEAGUE = html.Div(id='league', children=[
 ###
 # Team
 ###
-TEAM_DROPDOWN = dbc.Row(
-    dbc.Col(
-        dcc.Dropdown(
-            id='dropdown',
-            options=[dict(label=team, value=team) for team in TEAM_NAMES_LST],
-            value=None,
-            placeholder='Select a Team'
-        ),
-        width=3
-    )
-)
+# TEAM_DROPDOWN = dbc.Row(
+#     dbc.Col(
+#         dcc.Dropdown(
+#             id='dropdown',
+#             options=[dict(label=team, value=team) for team in TEAM_NAMES_LST],
+#             value=None,
+#             placeholder='Select a Team'
+#         ),
+#         width=3
+#     )
+# )
 
 #####
 # App
@@ -207,8 +208,7 @@ app.layout = html.Div(
                 html.Hr(),
                 html.Div(id='content-div')
                 ],
-            style=CONTENT_STYLE
-            )
+            style=CONTENT_STYLE)
         ],
 	style={'width': '90%', 'margin': 'auto', 'padding': '30px'}
 )
