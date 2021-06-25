@@ -65,6 +65,7 @@ cumulative_points = (
 # App Components
 #####
 TABLEAU_DASHBOARD = 'https://public.tableau.com/app/profile/stephen.helms/viz/Progresstowardthe2021Formula1DriversChampionship/2021Results'
+GOOGLE_DRIVE = 'https://docs.google.com/spreadsheets/d/15-2tdikz61PpbfsLgq9f9d4sTZW6DN1odPC8if-ksOk/edit#gid=415894594'
 
 SIDEBAR_STYLE = {
     "position": "fixed",
@@ -97,7 +98,12 @@ SIDEBAR = html.Div([
         html.A(
             'Driver Dashboard - Tableau', 
             href=TABLEAU_DASHBOARD,
-            target='_blank')
+            target='_blank'),
+        html.A(
+            'League - Google Sheets',
+            href=GOOGLE_DRIVE,
+            target='_blank'
+        )
     ],
     style=SIDEBAR_STYLE,
 )
