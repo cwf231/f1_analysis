@@ -257,7 +257,52 @@ EXP_LEAGUE_BAR = (
         )
     .update_layout(paper_bgcolor='rgba(0,0,0,0)', autosize=True)
 )
+EXP_DRIVER_POSITION = px.bar(
+    data_frame=(
+        f1.results[f1.results['RaceID'] > 202100]
+        .merge(fantasy_rosters[['DriverID', 'LastName', 'Team']], on='DriverID')
+        [['Position', 'LastName', 'Team']]
+        .groupby(['LastName', 'Team']).sum()
+        .reset_index()
+        .sort_values('Position', ascending=False)
+    ),
+    x='Position',
+    y='LastName',
+    title='Driver Performance',
+    height=500
+).update_layout(paper_bgcolor='rgba(0,0,0,0)', autosize=True)
+
+EXP_DRIVER_POSITION_BYTEAM = px.bar(
+    data_frame=(
+        f1.results[f1.results['RaceID'] > 202100]
+        .merge(fantasy_rosters[['DriverID', 'LastName', 'Team']], on='DriverID')
+        [['Position', 'LastName', 'Team']]
+        .groupby(['LastName', 'Team']).sum()
+        .reset_index()
+        .sort_values('Position', ascending=False)
+    ),
+    x='Position',
+    y='LastName',
+    color='Team',
+    title='Driver Performance by Team',
+    height=500
+).update_layout(paper_bgcolor='rgba(0,0,0,0)', autosize=True)
+
 EXP_LEAGUE = html.Div(id='exp-league', children=[
+    dbc.Row(
+        dbc.Col(
+            dcc.Graph(id='exp_driver_standings', figure=EXP_DRIVER_POSITION),
+            width=CHART_WIDTH
+        ),
+        justify='center'
+    ),
+    dbc.Row(
+        dbc.Col(
+            dcc.Graph(id='exp_driver_standings_byteam', figure=EXP_DRIVER_POSITION_BYTEAM),
+            width=CHART_WIDTH
+        ),
+        justify='center'
+    ),
     dbc.Row(
         dbc.Col(
             dcc.Graph(id='exp_league_line', figure=EXP_LEAGUE_LINE),
