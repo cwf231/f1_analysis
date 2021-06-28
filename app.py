@@ -253,7 +253,7 @@ EXP_LEAGUE_BAR = (
     px.bar(
         x='Round', y='Position', color='Team', 
         data_frame=EXP_pts_per_round,
-        title='Points by Round',
+        title='Experimental - Total Position by Round',
         )
     .update_layout(paper_bgcolor='rgba(0,0,0,0)', autosize=True)
 )
