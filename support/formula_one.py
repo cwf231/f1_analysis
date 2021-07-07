@@ -307,7 +307,7 @@ class FormulaOne:
             self.results
             .sort_values(['RaceID', 'Position'])
             .reset_index(drop=True)
-            .drop_duplicates()
+            .drop_duplicates(subset=['RaceID', 'Position'])
         )
         self.results.to_csv(os.path.join(
             self.directory, self._results_df))
