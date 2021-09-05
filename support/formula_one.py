@@ -142,7 +142,7 @@ class FormulaOne:
             results_row = dict(
                 RaceID=race_id,
                 Position=int(r.get('position', -1)),
-                Points=int(r.get('points', -1)),
+                Points=float(r.get('points', -1)),
                 DriverID=driver.get('driverId'),
                 ConstructorID=constructor.get('constructorId'),
                 Grid=int(r.get('grid', -1)),
