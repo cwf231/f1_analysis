@@ -352,6 +352,7 @@ class FormulaOne:
             return f'Data is up to date. | Most Recent RaceID: `{race_id}`'
         
         self.scrape(self.races['Season'].max())
+        self.races.drop_duplicates(inplace=True)
         
     def scrape(self, start_year, end_year=None):
         """
